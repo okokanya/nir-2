@@ -2,10 +2,13 @@ import React from 'react';
 import './RingChart.css'; // Подключаем стили
 
 const RingChart = ({ data }) => {
+    //Вычисление общей суммы значений:
     const total = data.reduce((sum, segment) => sum + segment[1], 0);
 
     // Формируем строку для conic-gradient
     let cumulativePercentage = 0;
+    //Сохранение средних позиций сегментов:
+    //Этот массив сохраняет процентную позицию середины каждого сегмента, чтобы использовать её для размещения подписей.
     const segmentPositions = [];
     const gradientString = data.map(([name, value, color]) => {
         const percentage = (value / total) * 100;
@@ -26,6 +29,7 @@ const RingChart = ({ data }) => {
                     background: `conic-gradient(${gradientString})`
                 }}
             >
+                {/* Расчёт положения подписей: */}
                 {segmentPositions.map((position, index) => {
                     const angle = (position / 100) * 360;
                     const x = 50 + 40 * Math.cos((angle - 90) * (Math.PI / 180));
