@@ -46,6 +46,8 @@ const RingChart = ({ data }) => {
                                 left: `${x}%`,
                                 transform: 'translate(-50%, -50%)',
                                 color: 'black',
+                                backgroundColor: 'white',
+                                padding: '2px',
                                 textAlign: 'center'
                             }}
                         >
